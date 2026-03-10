@@ -1,5 +1,29 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-// README.md를 읽고 아래에 코드를 작성하세요.
-Console.WriteLine("코드를 작성하세요.");
+DataProcessor dataProcessor = new DataProcessor();
+dataProcessor.numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+Console.WriteLine("=== 원본 배열 출력 ===");
+dataProcessor.ForEach(delegate (int i)
+{
+    Console.Write($"{i} ");
+});
+Console.WriteLine();
+Console.WriteLine();
+
+Console.WriteLine("=== 2배로 변환 ===");
+int [] newNumbers = dataProcessor.Transform(delegate (int i)
+{
+    return i * 2;
+});
+Console.WriteLine(string.Join(" ", newNumbers));
+Console.WriteLine();
+
+Console.WriteLine("=== 짝수만 필터링 ===");
+List<int> evens = dataProcessor.Filter(delegate (int i)
+{
+    return i % 2 == 0;
+});
+Console.WriteLine(string.Join(" ", evens));
