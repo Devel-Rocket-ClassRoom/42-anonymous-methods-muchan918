@@ -36,4 +36,16 @@ class DataProcessor
         }
         return result;
     }
+
+    public int Reduce(Func<int, int, int> reducer, int initialValue)
+    {
+        int oneValue = initialValue;
+
+         foreach(int n in numbers)
+        {
+            oneValue = reducer(oneValue, n);
+        }
+
+         return oneValue;
+    }
 }

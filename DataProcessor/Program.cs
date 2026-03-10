@@ -27,3 +27,11 @@ List<int> evens = dataProcessor.Filter(delegate (int i)
     return i % 2 == 0;
 });
 Console.WriteLine(string.Join(" ", evens));
+Console.WriteLine();
+
+Console.WriteLine("=== 합계 계산 ===");
+int sum = dataProcessor.Reduce(delegate (int a, int b)
+{
+    return a + b;
+}, 0);
+Console.WriteLine($"합계: {sum}");
